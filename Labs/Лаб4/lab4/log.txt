@@ -1,0 +1,2 @@
+CustomAgeException: Недопустимый возраст
+CustomAgeException: Недопустимый возраст
