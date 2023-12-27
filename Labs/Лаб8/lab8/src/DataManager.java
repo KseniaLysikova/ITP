@@ -46,11 +46,14 @@ public class DataManager {
         for (Object processor : processors) {
             executor.execute(() -> {
                 if (processor instanceof FilterProcessor) {
-                    data.stream().map(d -> ((FilterProcessor) processor).process(d)).forEach(processedData::add);
+                    data.stream().map(d ->
+                            ((FilterProcessor) processor).process(d)).forEach(processedData::add);
                 } else if (processor instanceof TransformProcessor) {
-                    data.stream().map(d -> ((TransformProcessor) processor).process(d)).forEach(processedData::add);
+                    data.stream().map(d ->
+                            ((TransformProcessor) processor).process(d)).forEach(processedData::add);
                 } else if (processor instanceof AggregateProcessor) {
-                    data.stream().map(d -> ((AggregateProcessor) processor).process(d)).forEach(processedData::add);
+                    data.stream().map(d ->
+                            ((AggregateProcessor) processor).process(d)).forEach(processedData::add);
                 }
             });
         }

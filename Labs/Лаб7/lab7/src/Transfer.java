@@ -24,7 +24,7 @@ public class Transfer {
             doneSignal.await();
             System.out.println("Работа выполнена.");
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
@@ -36,7 +36,8 @@ class Loader extends Thread {
     private int maxWeightPerTrip;
     private int workerNum;
 
-    public Loader(CountDownLatch startSignal, CountDownLatch doneSignal, List<Integer> weights, int maxWeightPerTrip, int workerNum) {
+    public Loader(CountDownLatch startSignal, CountDownLatch doneSignal, List<Integer> weights,
+                  int maxWeightPerTrip, int workerNum) {
         this.startSignal = startSignal;
         this.doneSignal = doneSignal;
         this.weights = weights;
@@ -57,17 +58,18 @@ class Loader extends Thread {
                     totalWeight += nextWeight;
                     weights.remove(0);
 
-                    System.out.println("Рейс " + workerNum + ": товар весом " + nextWeight + " кг. Всего: " + totalWeight + " кг.");
+                    System.out.println("Грузчик " + workerNum + " несет товар весом " + nextWeight +
+                            " кг. Всего: " + totalWeight + " кг.");
                 } else {
                     break;
                 }
             }
 
-            System.out.println("Рейс " + workerNum + ": успешно донесен товар.");
+            System.out.println("Грузчик " + workerNum + ": успешно донес товар.");
             doneSignal.countDown();
 
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

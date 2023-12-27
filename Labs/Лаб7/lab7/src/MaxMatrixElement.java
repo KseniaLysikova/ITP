@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -54,8 +52,8 @@ public class MaxMatrixElement {
         Random random = new Random();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                //matrix[i][j] = random.nextInt(100);
-                matrix[i][j] = 2;
+                matrix[i][j] = random.nextInt(100);
+                //matrix[i][j] = 2;
             }
         }
         return matrix;

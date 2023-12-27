@@ -23,7 +23,6 @@ public class TopWords {
         scanner.close();
         List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
         System.out.println(list);
-        //list.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
         list.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -33,11 +32,6 @@ public class TopWords {
         System.out.println(list);
         System.out.println("Top 10 words:");
         int count = 0;
-        /*for (Map.Entry<String, Integer> entry : list) {
-            System.out.println(entry.getKey());
-            count++;
-            if (count == 10) break;
-        }*/
         for (int i = list.size() - 1; i >= 0; i-- ) {
             System.out.println(list.get(i).getKey());
             count++;
